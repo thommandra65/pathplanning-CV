@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<robot name="mini" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+
+<xacro:property name="body_color" value="Gazebo/Silver" />
+
+<gazebo>
+      <plugin filename="libgazebo_ros_diff_drive.so" name="gazebo_base_controller">
+        <odometry_frame>odom</odometry_frame>
+        <commandTopic>cmd_vel</commandTopic>
+        <publish_odom>true</publish_odom>
+        <publish_odom_tf>true</publish_odom_tf>
+        <update_rate>30.0</update_rate>
+        <left_joint>Revolute 6</left_joint>
+        <right_joint>Revolute 7</right_joint>
+        <wheel_separation>1.0</wheel_separation>
+        <wheel_diameter>0.3</wheel_diameter>
+        <max_wheel_acceleration>0.3</max_wheel_acceleration>
+        <robotBaseFrame>base_link</robotBaseFrame>
+  
+      </plugin>
+</gazebo>
+
+<gazebo reference="base_link">
+  <material>Gazebo/Black</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+  <gravity>true</gravity>
+</gazebo>
+
+<gazebo reference="wheel_c_1">
+  <material>Gazebo/White</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="wheel_l_1">
+  <material>Gazebo/Orange</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+<gazebo reference="wheel_r_1">
+  <material>Gazebo/Orange</material>
+  <mu1>0.2</mu1>
+  <mu2>0.2</mu2>
+  <self_collide>true</self_collide>
+</gazebo>
+
+</robot>

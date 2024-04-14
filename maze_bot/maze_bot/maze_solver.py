@@ -42,9 +42,17 @@ class maze_solver(Node):
         self.bot_view = self.bridge.imgmsg_to_cv2(data,'bgr8') # performing conversion
 
     def maze_solving(self):
+
+        # Creating frame to display current robot state to user  
         frame_disp = self.sat_view.copy()
+
+        # [Stage 1: Localization] Localizing robot at each iteration 
         self.bot_localizer.localize_bot(self.sat_view, frame_disp)
+
+        # [Stage 2: Mapping] Converting Image to Graph
         self.bot_mapper.graphify(self.bot_localizer.maze_og)
+
+        # [Stage 3: PathPlanning] Using {User Specified PathPlanner} to find path to goal 
         start = self.bot_mapper.Graph.start
         end = self.bot_mapper.Graph.end
         maze = self.bot_mapper.maze

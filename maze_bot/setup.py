@@ -25,6 +25,7 @@ setup(
             'go_to_goal_node = maze_bot.go_to_goal:main',
             'video_recoder = maze_bot.video_saver:main',
             'maze_solver_node = maze_bot.maze_solver:main',
+            'maze_solver_run = maze_bot.maze_bot_run:main',    
         ],
     },
 )

@@ -48,7 +48,7 @@ class maze_solver(Node):
 
         # [Stage 1: Localization] Localizing robot at each iteration 
         self.bot_localizer.localize_bot(self.sat_view, frame_disp)
-        cv2.waitKey(0)
+       
         # [Stage 2: Mapping] Converting Image to Graph
         self.bot_mapper.graphify(self.bot_localizer.maze_og)
 
@@ -59,7 +59,7 @@ class maze_solver(Node):
         self.bot_pathplanner.find_path_nd_display(self.bot_mapper.Graph.graph, start, end, maze,method="dijisktra")
         self.bot_pathplanner.find_path_nd_display(self.bot_mapper.Graph.graph, start, end, maze,method="a_star")
         print("\nNodes Visited [Dijisktra V A-Star*] = [ {} V {} ]".format(self.bot_pathplanner.dijisktra.dijiktra_nodes_visited,self.bot_pathplanner.astar.astar_nodes_visited))
-        cv2.waitKey(0)
+
         # [Stage 4: MotionPlanning] Reach the (maze exit) by navigating the path previously computed
         bot_loc = self.bot_localizer.loc_car
         path = self.bot_pathplanner.path_to_goal
